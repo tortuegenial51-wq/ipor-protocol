@@ -173,17 +173,20 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
     /// The ONLY limit is: require(amountToRedeem > 0, ...)
     function test_WstEth_NoRedeemFloor_LP_CanGoBelowPxFixed() public {
         address user = _getUserAddress(30);
-        _setupUser(user, 1_010e18); // 1000 for LP + 10 for swap collateral
+        // 100 000 wstETH for LP so user dominates the pool (~98.4% of total),
+        // 2 500 wstETH collateral for swap. Owner _init() seed ≈ 1 608 wstETH.
+        _setupUser(user, 102_600e18);
 
-        // 1. Provide 1000 wstETH as LP
+        // 1. Provide 100 000 wstETH as LP → total pool ≈ 101 608 wstETH
         vm.prank(user);
-        IAmmPoolsServiceWstEth(iporProtocolRouterProxy).provideLiquidityWstEth(user, 1_000e18);
+        IAmmPoolsServiceWstEth(iporProtocolRouterProxy).provideLiquidityWstEth(user, 100_000e18);
 
         // 2. Open a pay-fixed swap to create pxFixed > 0
+        //    collateral 2 500 wstETH < 2.5% × 101 608 = 2 540 wstETH → within maxCollateralRatioPerLeg
         AmmTypes.RiskIndicatorsInputs memory riskInputs = _buildOpenRiskInputs(0, IporTypes.SwapTenor.DAYS_28);
         vm.prank(user);
         IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy)
-            .openSwapPayFixed28daysWstEth(user, wstETH, 10e18, 1e18, 10e18, riskInputs);
+            .openSwapPayFixed28daysWstEth(user, wstETH, 2_500e18, 1e18, 10e18, riskInputs);
 
         // 3. Record pxFixed and LP before redemption
         IporTypes.AmmBalancesForOpenSwapMemory memory balBefore =
@@ -213,23 +216,27 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
     // -------------------------------------------------------------------------
 
     /// @notice E2E: calling openSwapPayFixed28daysWstEth via IporProtocolRouter reverts
-    /// when LP < pxFixed. Path: Router → AmmOpenSwapServiceBaseV1:157
-    /// → SpreadBaseV1.calculateAndUpdateOfferedRatePayFixed
-    /// → DemandSpreadStEthLibsBaseV1.calculatePayFixedSpread → lpDepth underflow
+    /// when LP < pxFixed. Path: Router → AmmOpenSwapServiceBaseV1:147
+    /// → _validateLiquidityPoolCollateralRatioAndSwapLeverage → IPOR_302.
+    /// Note: the collateral-ratio guard (line 147) fires BEFORE the spread call (line 157),
+    /// so the revert is LP_COLLATERAL_RATIO_EXCEEDED rather than arithmetic panic.
+    /// The DoS impact is identical: no new swap can be opened.
     function test_E2E_OpenSwapViaRouter_Reverts_WhenLpBelowPxFixed() public {
         address user = _getUserAddress(31);
-        _setupUser(user, 1_010e18); // 1000 for LP + 10 for swap collateral
+        _setupUser(user, 102_600e18);
 
-        // 1. Provide LP and open a swap
+        // 1. Provide LP and open a large swap to establish a meaningful pxFixed
         vm.prank(user);
-        IAmmPoolsServiceWstEth(iporProtocolRouterProxy).provideLiquidityWstEth(user, 1_000e18);
+        IAmmPoolsServiceWstEth(iporProtocolRouterProxy).provideLiquidityWstEth(user, 100_000e18);
 
         AmmTypes.RiskIndicatorsInputs memory riskInputs = _buildOpenRiskInputs(0, IporTypes.SwapTenor.DAYS_28);
         vm.prank(user);
         IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy)
-            .openSwapPayFixed28daysWstEth(user, wstETH, 10e18, 1e18, 10e18, riskInputs);
+            .openSwapPayFixed28daysWstEth(user, wstETH, 2_500e18, 1e18, 10e18, riskInputs);
 
-        // 2. Reduce LP below pxFixed (no redeemLpMaxCollateralRatio)
+        // 2. Reduce LP below pxFixed (no redeemLpMaxCollateralRatio on wstETH)
+        //    After this: LP ≈ owner seed (1 608 wstETH) + 0.1% of user share ≈ 1 708 wstETH
+        //    pxFixed ≈ 2 500 wstETH → LP < pxFixed
         uint256 ipBalance = IIpToken(ipwstETH).balanceOf(user);
         vm.prank(user);
         IAmmPoolsServiceWstEth(iporProtocolRouterProxy)
@@ -240,12 +247,12 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
             IAmmSwapsLens(iporProtocolRouterProxy).getBalancesForOpenSwap(wstETH);
         assertLt(bal.liquidityPool, bal.totalCollateralPayFixed, "precondition: LP < pxFixed");
 
-        // 4. Any new swap opening now reverts — protocol is completely blocked for new users
-        //    Panic(0x11): LP < pxFixed → lpDepth underflow in calculateLpDepth
-        _setupUser(user, 10e18);
+        // 4. Any new swap opening now reverts with LP_COLLATERAL_RATIO_EXCEEDED (IPOR_302).
+        //    The collateral-ratio check at AmmOpenSwapServiceBaseV1:147 fires before the spread,
+        //    so the router rejects new swaps before even reaching calculateSpreadFunction.
         AmmTypes.RiskIndicatorsInputs memory riskInputs2 = _buildOpenRiskInputs(0, IporTypes.SwapTenor.DAYS_28);
         vm.prank(user);
-        vm.expectRevert(stdError.arithmeticError);
+        vm.expectRevert("IPOR_302");
         IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy)
             .openSwapPayFixed28daysWstEth(user, wstETH, 10e18, 1e18, 10e18, riskInputs2);
     }
@@ -264,16 +271,21 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
     /// for up to 90 days (max tenor). No emergency bypass path exists.
     function test_E2E_UnwindClose_Reverts_WhenLpBelowPxFixed() public {
         address user = _getUserAddress(32);
-        _setupUser(user, 1_010e18); // 1000 for LP + 10 for swap collateral
+        _setupUser(user, 102_600e18);
 
         // 1. Provide LP and open a swap
         vm.prank(user);
-        IAmmPoolsServiceWstEth(iporProtocolRouterProxy).provideLiquidityWstEth(user, 1_000e18);
+        IAmmPoolsServiceWstEth(iporProtocolRouterProxy).provideLiquidityWstEth(user, 100_000e18);
 
         AmmTypes.RiskIndicatorsInputs memory riskInputs = _buildOpenRiskInputs(0, IporTypes.SwapTenor.DAYS_28);
         vm.prank(user);
         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy)
-            .openSwapPayFixed28daysWstEth(user, wstETH, 10e18, 1e18, 10e18, riskInputs);
+            .openSwapPayFixed28daysWstEth(user, wstETH, 2_500e18, 1e18, 10e18, riskInputs);
+
+        // Advance past the unwind lock window (timeAfterOpenAllowedToCloseSwapWithUnwindingTenor28days = 1 day,
+        // ArbitrumTestForkCommons.sol:434). Must warp BEFORE the redemption so the
+        // swap age is already > 1 day when closeSwapsWstEth is called.
+        vm.warp(block.timestamp + 2 days);
 
         // 2. Reduce LP below pxFixed (no redeemLpMaxCollateralRatio on wstETH)
         uint256 ipBalance = IIpToken(ipwstETH).balanceOf(user);
