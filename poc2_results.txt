@@ -1,0 +1,1425 @@
+Compiler run failed:
+Warning (1878): SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> test/amm-usdm/IUSDM.sol
+
+Warning (1878): SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> test/mocks/Multicall2.sol
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> test/utils/factory/IporProtocolFactory.sol:1761:9:
+     |
+1761 |         address messageSignerAddress,
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> test/utils/factory/IporProtocolFactory.sol:118:5:
+    |
+118 |     address public messageSignerAddress;
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2519): This declaration shadows an existing declaration.
+    --> test/utils/factory/IporProtocolFactory.sol:1813:9:
+     |
+1813 |         address messageSignerAddress
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+   --> test/utils/factory/IporProtocolFactory.sol:118:5:
+    |
+118 |     address public messageSignerAddress;
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> test/spread/SpreadSmoke.t.sol:512:9:
+    |
+512 |         address dai = address(_spreadTestSystem.dai());
+    |         ^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> test/spread/SpreadSmoke.t.sol:12:5:
+   |
+12 |     address dai;
+   |     ^^^^^^^^^^^
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> test/spread/SpreadSmoke.t.sol:597:9:
+    |
+597 |         address dai = address(_spreadTestSystem.dai());
+    |         ^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> test/spread/SpreadSmoke.t.sol:12:5:
+   |
+12 |     address dai;
+   |     ^^^^^^^^^^^
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> test/spread/SpreadSmoke.t.sol:729:9:
+    |
+729 |         address dai = address(_spreadTestSystem.dai());
+    |         ^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> test/spread/SpreadSmoke.t.sol:12:5:
+   |
+12 |     address dai;
+   |     ^^^^^^^^^^^
+
+Warning (2519): This declaration shadows an existing declaration.
+   --> test/spread/SpreadSmoke.t.sol:813:9:
+    |
+813 |         address dai = address(_spreadTestSystem.dai());
+    |         ^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> test/spread/SpreadSmoke.t.sol:12:5:
+   |
+12 |     address dai;
+   |     ^^^^^^^^^^^
+
+Warning (3628): This contract has a payable fallback function, but no receive ether function. Consider adding a receive ether function.
+ --> test/mocks/EmptyImplementation.sol:4:1:
+  |
+4 | contract EmptyImplementation {
+  | ^ (Relevant source part starts here and spans across multiple lines).
+Note: The payable fallback function is defined here.
+  --> test/mocks/EmptyImplementation.sol:16:5:
+   |
+16 |     fallback() external payable {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (3628): This contract has a payable fallback function, but no receive ether function. Consider adding a receive ether function.
+ --> test/contracts/IporClient.sol:9:1:
+  |
+9 | contract IporClient {
+  | ^ (Relevant source part starts here and spans across multiple lines).
+Note: The payable fallback function is defined here.
+  --> test/contracts/IporClient.sol:30:5:
+   |
+30 |     fallback(bytes calldata input) external payable returns (bytes memory output) {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2072): Unused local variable.
+   --> test/amm-weEth/WeEthForkAmmWeEthExchangeRate.t.sol:131:13:
+    |
+131 |             uint256 ipWeEthAmount = IERC20(ipWeEth).balanceOf(user);
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/amm/AmmClosingSwaps.t.sol:75:9:
+   |
+75 |         uint256 buyerBalanceBefore = _iporProtocol.asset.balanceOf(_buyer);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/amm/AmmClosingSwaps.t.sol:76:9:
+   |
+76 |         uint256 adminBalanceBefore = _iporProtocol.asset.balanceOf(_admin);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/amm/AmmClosingSwaps.t.sol:80:9:
+   |
+80 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+   |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:108:9:
+    |
+108 |         uint256 buyerBalanceAfter = _iporProtocol.asset.balanceOf(_buyer);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:109:9:
+    |
+109 |         uint256 adminBalanceAfter = _iporProtocol.asset.balanceOf(_admin);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:313:9:
+    |
+313 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:369:9:
+    |
+369 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:427:9:
+    |
+427 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:485:9:
+    |
+485 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:544:9:
+    |
+544 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:606:9:
+    |
+606 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:661:9:
+    |
+661 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:721:9:
+    |
+721 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmClosingSwaps.t.sol:777:9:
+    |
+777 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1456:9:
+     |
+1456 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1522:9:
+     |
+1522 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1611:9:
+     |
+1611 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1698:9:
+     |
+1698 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1784:9:
+     |
+1784 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1870:9:
+     |
+1870 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:1957:9:
+     |
+1957 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2046:9:
+     |
+2046 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2137:9:
+     |
+2137 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2226:9:
+     |
+2226 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2317:9:
+     |
+2317 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2408:9:
+     |
+2408 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2497:9:
+     |
+2497 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2586:9:
+     |
+2586 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2677:9:
+     |
+2677 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2766:9:
+     |
+2766 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2860:9:
+     |
+2860 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:2954:9:
+     |
+2954 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:3048:9:
+     |
+3048 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/AmmClosingSwaps.t.sol:3239:9:
+     |
+3239 |         AmmTypes.Swap memory swap = _iporProtocol.ammStorage.getSwap(
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/amm/AmmSoapAndCloseSwap.t.sol:97:13:
+   |
+97 |             AmmTypes.IporSwapClosingResult[] memory closedPayFixedSwaps,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmSoapAndCloseSwap.t.sol:146:13:
+    |
+146 |             AmmTypes.IporSwapClosingResult[] memory closedPayFixedSwaps,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmSoapAndCloseSwap.t.sol:195:13:
+    |
+195 |             AmmTypes.IporSwapClosingResult[] memory closedPayFixedSwaps,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmSoapAndCloseSwap.t.sol:244:13:
+    |
+244 |             AmmTypes.IporSwapClosingResult[] memory closedPayFixedSwaps,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmSoapAndCloseSwap.t.sol:293:13:
+    |
+293 |             AmmTypes.IporSwapClosingResult[] memory closedPayFixedSwaps,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/amm/AmmUnwindSwap.t.sol:74:9:
+   |
+74 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysDai(
+   |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:159:9:
+    |
+159 |         uint256 swapIdOne = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysDai(
+    |         ^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:169:9:
+    |
+169 |         uint256 swapIdTwo = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysDai(
+    |         ^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:284:9:
+    |
+284 |         uint256 swapIdOne = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysDai(
+    |         ^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:294:9:
+    |
+294 |         uint256 swapIdTwo = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysDai(
+    |         ^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:303:9:
+    |
+303 |         AmmTypes.Swap memory swapOne = _iporProtocol.ammStorage.getSwap(
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:395:9:
+    |
+395 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysDai(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:406:9:
+    |
+406 |         AmmTypes.Swap memory swap = _iporProtocol.ammStorage.getSwap(
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:466:9:
+    |
+466 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysDai(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:477:9:
+    |
+477 |         AmmTypes.Swap memory swap = _iporProtocol.ammStorage.getSwap(
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:517:9:
+    |
+517 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysDai(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:558:9:
+    |
+558 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysDai(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:599:9:
+    |
+599 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysDai(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:640:9:
+    |
+640 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysDai(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:681:9:
+    |
+681 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:727:9:
+    |
+727 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapPayFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:773:9:
+    |
+773 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/AmmUnwindSwap.t.sol:819:9:
+    |
+819 |         uint256 swapId = _iporProtocol.ammOpenSwapService.openSwapReceiveFixed28daysUsdt(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/libraries/IporSwapLogic.t.sol:180:9:
+    |
+180 |         int256 swapUnwindPnlValue = _iporSwapLogic.calculateSwapUnwindPnlValue(
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/amm/libraries/IporSwapLogic.t.sol:795:9:
+    |
+795 |         int256 swapUnwindPnlValue = _iporSwapLogic.calculateSwapUnwindPnlValue(
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/amm/libraries/IporSwapLogic.t.sol:1320:9:
+     |
+1320 |         uint256 swapOpeningFeeAmount = _iporSwapLogic.calculateSwapUnwindOpeningFeeAmount(
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/ArbitrumForkAmmSwapsLens.t.sol:59:9:
+   |
+59 |         uint256 ammTreasuryErc20Balance = IStETH(wstETH).balanceOf(ammTreasuryWstEthProxy);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/ArbitrumForkAmmSwapsLens.t.sol:80:9:
+   |
+80 |         IporTypes.AmmBalancesForOpenSwapMemory memory balancesBefore = IAmmSwapsLens(iporProtocolRouterProxy)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/ArbitrumForkAmmSwapsLens.t.sol:84:9:
+   |
+84 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+   |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/AmmGovernanceServiceUsdc.t.sol:30:9:
+   |
+30 |         uint256 wadProvideAmount = 10000 * PROTOCOL_DECIMALS;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/ArbitrumForkAmmUsdcCloseSwaps.t.sol:29:9:
+   |
+29 |         uint256 wadProvideAmount = 10000 * PROTOCOL_DECIMALS;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcExchangeRate.t.sol:119:9:
+    |
+119 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapPayFixed28daysUsdc(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcExchangeRate.t.sol:189:9:
+    |
+189 |         AmmTypesBaseV1.Balance memory balance = AmmStorageBaseV1(ammStorageUsdcProxy).getBalance();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcExchangeRate.t.sol:261:9:
+    |
+261 |         AmmTypesBaseV1.Balance memory balance = AmmStorageBaseV1(ammStorageUsdcProxy).getBalance();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:42:9:
+   |
+42 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:47:9:
+   |
+47 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapPayFixed28daysUsdc(
+   |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:57:9:
+   |
+57 |         uint256 ammTreasuryUsdcErc20BalanceAfter = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:106:9:
+    |
+106 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:156:9:
+    |
+156 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:161:9:
+    |
+161 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapPayFixed60daysUsdc(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:171:9:
+    |
+171 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:220:9:
+    |
+220 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:270:9:
+    |
+270 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:275:9:
+    |
+275 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapPayFixed90daysUsdc(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:285:9:
+    |
+285 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:334:9:
+    |
+334 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:384:9:
+    |
+384 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:388:9:
+    |
+388 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapReceiveFixed28daysUsdc(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:398:9:
+    |
+398 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:448:9:
+    |
+448 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:498:9:
+    |
+498 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:502:9:
+    |
+502 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapReceiveFixed60daysUsdc(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:512:9:
+    |
+512 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:562:9:
+    |
+562 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:612:9:
+    |
+612 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:616:9:
+    |
+616 |         uint256 swapId = IAmmOpenSwapServiceUsdc(iporProtocolRouterProxy).openSwapReceiveFixed90daysUsdc(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:626:9:
+    |
+626 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:676:9:
+    |
+676 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ArbitrumForkAmmUsdcOpenSwaps.t.sol:728:9:
+    |
+728 |         uint256 ammTreasuryUsdcErc20BalanceBefore = ERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/ProvideUsdcArbitrum.t.sol:68:9:
+   |
+68 |         uint256 wadProvideAmount = 10000 * PROTOCOL_DECIMALS;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/usdc/ProvideUsdcArbitrum.t.sol:88:9:
+   |
+88 |         uint256 ammTreasuryUsdcBalanceAfter = IERC20(USDC).balanceOf(ammTreasuryUsdcProxy);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/usdc/ProvideUsdcArbitrum.t.sol:367:9:
+    |
+367 |         uint256 wadProvideAmount = 100 * PROTOCOL_DECIMALS;
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:118:9:
+    |
+118 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:164:9:
+    |
+164 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed60daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:210:9:
+    |
+210 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed90daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:256:9:
+    |
+256 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:302:9:
+    |
+302 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:348:9:
+    |
+348 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:401:9:
+    |
+401 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:470:9:
+    |
+470 |         AmmTypesBaseV1.Balance memory balance = AmmStorageBaseV1(ammStorageWstEthProxy).getBalance();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:542:9:
+    |
+542 |         AmmTypesBaseV1.Balance memory balance = AmmStorageBaseV1(ammStorageWstEthProxy).getBalance();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthExchangeRate.t.sol:597:9:
+    |
+597 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:43:9:
+   |
+43 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:48:9:
+   |
+48 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+   |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:58:9:
+   |
+58 |         uint256 ammTreasuryWstEthErc20BalanceAfter = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:107:9:
+    |
+107 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:157:9:
+    |
+157 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:162:9:
+    |
+162 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed60daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:172:9:
+    |
+172 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:221:9:
+    |
+221 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:271:9:
+    |
+271 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:276:9:
+    |
+276 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed90daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:286:9:
+    |
+286 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:335:9:
+    |
+335 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:385:9:
+    |
+385 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:389:9:
+    |
+389 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:399:9:
+    |
+399 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:449:9:
+    |
+449 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:499:9:
+    |
+499 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:503:9:
+    |
+503 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:513:9:
+    |
+513 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:563:9:
+    |
+563 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:613:9:
+    |
+613 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:617:9:
+    |
+617 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:627:9:
+    |
+627 |         uint256 ammTreasuryStEthErc20BalanceAfter = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:677:9:
+    |
+677 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:729:9:
+    |
+729 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:883:9:
+    |
+883 |         uint256 ammTreasuryWstEthErc20BalanceBefore = ERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthOpenSwaps.t.sol:1036:9:
+     |
+1036 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthSwapsEvents.t.sol:112:9:
+    |
+112 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapPayFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/arbitrum/wstETH/ArbitrumForkAmmWstEthSwapsEvents.t.sol:181:9:
+    |
+181 |         uint256 swapId = IAmmOpenSwapServiceWstEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysWstEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/chain-base/BaseForkAmmWstEthCloseSwaps.t.sol:154:9:
+    |
+154 |         uint256 ammTreasuryBalanceBefore = IERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/chain-base/BaseForkAmmWstEthCloseSwaps.t.sol:173:9:
+    |
+173 |         uint256 ammTreasuryBalanceAfter = IERC20(wstETH).balanceOf(ammTreasuryWstEthProxy);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:199:9:
+    |
+199 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:245:9:
+    |
+245 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:291:9:
+    |
+291 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:332:9:
+    |
+332 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:378:9:
+    |
+378 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:424:9:
+    |
+424 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:470:9:
+    |
+470 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:511:9:
+    |
+511 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:557:9:
+    |
+557 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:603:9:
+    |
+603 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:649:9:
+    |
+649 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:690:9:
+    |
+690 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:736:9:
+    |
+736 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:782:9:
+    |
+782 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:828:9:
+    |
+828 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:869:9:
+    |
+869 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:915:9:
+    |
+915 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthExchangeRate.t.sol:961:9:
+    |
+961 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1007:9:
+     |
+1007 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1048:9:
+     |
+1048 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1094:9:
+     |
+1094 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1140:9:
+     |
+1140 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1186:9:
+     |
+1186 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1227:9:
+     |
+1227 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1279:9:
+     |
+1279 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1331:9:
+     |
+1331 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1381:9:
+     |
+1381 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1428:9:
+     |
+1428 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1497:9:
+     |
+1497 |         AmmTypesBaseV1.Balance memory balance = AmmStorageBaseV1(ammStorageProxyStEth).getBalance();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1569:9:
+     |
+1569 |         AmmTypesBaseV1.Balance memory balance = AmmStorageBaseV1(ammStorageProxyStEth).getBalance();
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1623:9:
+     |
+1623 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1673:9:
+     |
+1673 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1722:9:
+     |
+1722 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthExchangeRate.t.sol:1771:9:
+     |
+1771 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+  --> test/fork/ForkAmmStEthOpenSwaps.t.sol:44:9:
+   |
+44 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+   |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:109:9:
+    |
+109 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:174:9:
+    |
+174 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:234:9:
+    |
+234 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:299:9:
+    |
+299 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:354:9:
+    |
+354 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:419:9:
+    |
+419 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:484:9:
+    |
+484 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:549:9:
+    |
+549 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:604:9:
+    |
+604 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed60daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:664:9:
+    |
+664 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:729:9:
+    |
+729 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:794:9:
+    |
+794 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:859:9:
+    |
+859 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:914:9:
+    |
+914 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed90daysStEth{
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+   --> test/fork/ForkAmmStEthOpenSwaps.t.sol:973:9:
+    |
+973 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth(
+    |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1038:9:
+     |
+1038 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1103:9:
+     |
+1103 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1169:9:
+     |
+1169 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1223:9:
+     |
+1223 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed28daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1283:9:
+     |
+1283 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1348:9:
+     |
+1348 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1413:9:
+     |
+1413 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1479:9:
+     |
+1479 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1533:9:
+     |
+1533 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed60daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1593:9:
+     |
+1593 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1658:9:
+     |
+1658 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth{
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1718:9:
+     |
+1718 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1783:9:
+     |
+1783 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapReceiveFixed90daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1849:9:
+     |
+1849 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:1899:9:
+     |
+1899 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:2127:9:
+     |
+2127 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:2700:9:
+     |
+2700 |         uint256 ammTreasuryStEthErc20BalanceBefore = ERC20(stETH).balanceOf(ammTreasuryProxyStEth);
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:3138:9:
+     |
+3138 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:3217:9:
+     |
+3217 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (2072): Unused local variable.
+    --> test/fork/ForkAmmStEthOpenSwaps.t.sol:3292:9:
+     |
+3292 |         uint256 swapId = IAmmOpenSwapServiceStEth(iporProtocolRouterProxy).openSwapPayFixed28daysStEth(
+     |         ^^^^^^^^^^^^^^
+
+Warning (4591): There are more than 256 warnings. Ignoring the rest.
+Error (8961): Function cannot be declared as view because this expression (potentially) modifies the state.
+  --> test/fork/PoC_BugBounty.t.sol:57:9:
+   |
+57 |         assertTrue(spread >= 0, "Le calcul normal doit reussir");
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as view because this expression (potentially) modifies the state.
+   --> test/fork/PoC_BugBounty.t.sol:232:9:
+    |
+232 |         assertEq(hashEthereum, hashArbitrum,
+    |         ^ (Relevant source part starts here and spans across multiple lines).
+
+Error (2527): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
+   --> test/fork/PoC_BugBounty.t.sol:323:36:
+    |
+323 |         (bool success, ) = address(this).staticcall(
+    |                                    ^^^^
+
+Error (2527): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
+   --> test/fork/PoC_BugBounty.t.sol:323:28:
+    |
+323 |         (bool success, ) = address(this).staticcall(
+    |                            ^ (Relevant source part starts here and spans across multiple lines).
+
+Error (2527): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
+   --> test/fork/PoC_BugBounty.t.sol:330:36:
+    |
+330 |         (bool success, ) = address(this).staticcall(
+    |                                    ^^^^
+
+Error (2527): Function declared as pure, but this expression (potentially) reads from the environment or state and thus requires "view".
+   --> test/fork/PoC_BugBounty.t.sol:330:28:
+    |
+330 |         (bool success, ) = address(this).staticcall(
+    |                            ^ (Relevant source part starts here and spans across multiple lines).
+
+Error (8961): Function cannot be declared as view because this expression (potentially) modifies the state.
+  --> test/fork/PoC_DivisionByZero.t.sol:69:9:
+   |
+69 |         assertEq(lpDepth, 0, "lpDepth must be 0 when LP = pxFixed and rxFixed = 0");
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as pure because this expression (potentially) modifies the state.
+  --> test/fork/PoC_DivisionByZero.t.sol:80:9:
+   |
+80 |         assertEq(notionalDepth, 0, "notionalDepth must be 0 when lpDepth = 0");
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as view because this expression (potentially) modifies the state.
+   --> test/fork/PoC_DivisionByZero.t.sol:108:9:
+    |
+108 |         assertGt(notionalDepth, 0, "notionalDepth must be > 0 for normal operation");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as view because this expression (potentially) modifies the state.
+   --> test/fork/PoC_DivisionByZero.t.sol:109:9:
+    |
+109 |         assertGe(ratio, 0, "ratio computation should succeed");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as pure because this expression (potentially) modifies the state.
+   --> test/fork/PoC_DivisionByZero.t.sol:150:9:
+    |
+150 |         assertLe(ratioAtOpen, maxCollateralRatioPerLeg, "open constraint satisfied");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as pure because this expression (potentially) modifies the state.
+   --> test/fork/PoC_DivisionByZero.t.sol:158:9:
+    |
+158 |         assertLe(collateralRatioAfter, redeemLpMaxCollateralRatio, "redeem constraint satisfied");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error (8961): Function cannot be declared as pure because this expression (potentially) modifies the state.
+   --> test/fork/PoC_DivisionByZero.t.sol:162:9:
+    |
+162 |         assertEq(lpDepth, 0, "lpDepth = 0 is reachable within production constraints");
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Error: Compilation failed
