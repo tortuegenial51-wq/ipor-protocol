@@ -2,7 +2,7 @@
 
 **Protocol:** IPOR Protocol  
 **Network:** Arbitrum  
-**Severity:** High  
+**Severity:** Medium  
 **Category:** Smart Contract — Denial of Service  
 
 ---
@@ -255,23 +255,20 @@ Supporting offline tests (no RPC required): `test/fork/PoC_DivisionByZero.t.sol`
 
 ---
 
-## Severity Justification — High
+## Severity Justification — Medium
 
 | Criterion | Assessment |
 |-----------|-----------|
 | Funds stolen | No |
-| Funds temporarily locked | **Yes** — existing swaps cannot be unwound early (up to 90 days) |
 | Protocol operations blocked | **Yes** — all new swap openings and all early closes |
 | Liquidations prevented | **Yes** — bad debt accumulates |
 | Governance required | No |
 | Privileged role required | No |
 | Attacker cost | Low — organic market conditions sufficient |
 | Emergency bypass | None |
-| Duration | Up to 90 days |
+| Duration | **Up to 90 days** — far exceeds the 24-hour threshold |
 
-Per Immunefi's impact taxonomy: "Temporary freezing of funds" and "Griefing (no attacker profit motive, but damage to users or protocol)" with no emergency recovery path = **High**.
-
-Not submitted as Critical: there is no direct theft of funds. The Panic prevents protocol operations but does not redirect assets.
+Per Immunefi's impact taxonomy: "Smart contract unable to operate due to lack of token funds for 24 hours." The DoS persists until LPs voluntarily add liquidity or all pay-fixed swaps expire at maturity — a window of **up to 90 days**, which substantially exceeds the 24-hour minimum required for this Medium category.
 
 ---
 
