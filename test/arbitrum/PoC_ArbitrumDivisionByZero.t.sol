@@ -173,7 +173,7 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
     /// The ONLY limit is: require(amountToRedeem > 0, ...)
     function test_WstEth_NoRedeemFloor_LP_CanGoBelowPxFixed() public {
         address user = _getUserAddress(30);
-        _setupUser(user, 1_000e18);
+        _setupUser(user, 1_010e18); // 1000 for LP + 10 for swap collateral
 
         // 1. Provide 1000 wstETH as LP
         vm.prank(user);
@@ -218,7 +218,7 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
     /// → DemandSpreadStEthLibsBaseV1.calculatePayFixedSpread → lpDepth underflow
     function test_E2E_OpenSwapViaRouter_Reverts_WhenLpBelowPxFixed() public {
         address user = _getUserAddress(31);
-        _setupUser(user, 1_000e18);
+        _setupUser(user, 1_010e18); // 1000 for LP + 10 for swap collateral
 
         // 1. Provide LP and open a swap
         vm.prank(user);
@@ -264,7 +264,7 @@ contract PoC_ArbitrumDivisionByZero is ArbitrumTestForkCommons {
     /// for up to 90 days (max tenor). No emergency bypass path exists.
     function test_E2E_UnwindClose_Reverts_WhenLpBelowPxFixed() public {
         address user = _getUserAddress(32);
-        _setupUser(user, 1_000e18);
+        _setupUser(user, 1_010e18); // 1000 for LP + 10 for swap collateral
 
         // 1. Provide LP and open a swap
         vm.prank(user);
